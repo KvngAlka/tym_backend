@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 
 import {config} from 'dotenv'
-import { ami } from './asterisk.js';
 import { cdrs, users } from './db.js';
 
 config();
