@@ -3,6 +3,7 @@ import cors from 'cors'
 
 import {config} from 'dotenv'
 import { ami } from './asterisk.js';
+import { cdrs, users } from './db.js';
 
 config();
 
@@ -14,7 +15,6 @@ app.use(express.json());
 app.use(cors());
 
 
-ami.connect(res => console.log("This is the res ami: ", res))
 
 
 app.get("/", (req,res)=>{
@@ -40,6 +40,16 @@ app.post('/auth',(req,res)=>{
     }
 
     
+})
+
+
+app.get('/users', (_,res)=>{
+    res.status(200).json(users);
+})
+
+
+app.get("/cdrs", (_,res)=>{
+    res.status(200).json(cdrs)
 })
 
 
